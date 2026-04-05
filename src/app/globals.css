@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #FAF7F2;
+  --blush: #E8C4B8;
+  --blush-dark: #D4A090;
+  --gold: #C9A84C;
+  --gold-light: #E2C87A;
+  --sage: #8FAF8F;
+  --sage-light: #B5CDB5;
+  --charcoal: #3D3D3D;
+  --charcoal-light: #6B6B6B;
+  --white: #FFFFFF;
+
+  --background: var(--cream);
+  --foreground: var(--charcoal);
 }
 
 @theme inline {
+  --color-cream: var(--cream);
+  --color-blush: var(--blush);
+  --color-blush-dark: var(--blush-dark);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-light: var(--charcoal-light);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-lato);
+  --font-script: var(--font-great-vibes);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--font-lato), Georgia, sans-serif;
+  line-height: 1.6;
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-playfair), Georgia, serif;
+  line-height: 1.3;
+}
+
+.font-script {
+  font-family: var(--font-great-vibes), cursive;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem auto;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
