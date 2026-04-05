@@ -7,43 +7,43 @@ import SectionHeader from '@/components/ui/SectionHeader'
 const faqs = [
   {
     q: 'What is the dress code?',
-    a: 'Cocktail attire. Come looking and feeling your best — wear whatever makes you feel most like yourself.',
+    a: 'Cocktail attire — come looking and feeling your best. Wear whatever makes you feel most like yourself.',
   },
   {
     q: 'Are children welcome?',
-    a: 'We love your little ones! However, we have decided to keep our celebration adults-only (18+) so everyone can relax and enjoy the evening. We hope you can arrange childcare and celebrate with us.',
+    a: 'Absolutely! We love your little ones and welcome them to celebrate with us.',
   },
   {
     q: 'Can I bring a plus one?',
-    a: "Due to venue capacity, we are only able to accommodate guests specifically listed on your invitation. If your invite says 'and guest,' please feel free to bring someone. If not, we ask that you attend solo.",
+    a: "We are only able to accommodate guests listed on your invitation. If your invite includes '& Guest,' please feel free to bring someone along. If not, we kindly ask that you attend solo.",
   },
   {
     q: 'Will the ceremony be indoors or outdoors?',
-    a: 'The ceremony will be held outdoors in the estate gardens, weather permitting. The reception will be indoors in the grand ballroom. We recommend bringing a light wrap for the evening.',
+    a: 'The ceremony will be held outdoors, weather permitting — if Mother Nature has other plans, we will move inside. The reception will flow between indoor and outdoor spaces so you can enjoy both.',
   },
   {
     q: 'Is there parking at the venue?',
-    a: 'Yes, complimentary parking is available on-site. However, we strongly encourage guests to use the shuttle or rideshare if you plan to drink. Please do not drink and drive.',
+    a: 'Yes, parking is available on-site. If you plan to drink, please arrange a rideshare or designate a driver.',
   },
   {
     q: 'What time should I arrive?',
-    a: 'Please arrive by 2:45 PM. Seating begins at 2:30 PM and the ceremony will start promptly at 3:00 PM. Latecomers will need to wait until after the processional to be seated.',
+    a: 'Please plan to arrive by 6:00 PM so we can get the celebration started on time.',
   },
   {
     q: 'Will there be an open bar?',
-    a: 'Yes! We will have a full open bar during cocktail hour and reception, including wine, beer, spirits, and non-alcoholic options.',
+    a: 'Yes! We will have a full open bar throughout the evening, including wine, beer, spirits, and non-alcoholic options.',
   },
   {
     q: 'Can I take photos during the ceremony?',
-    a: "We are having an unplugged ceremony — we ask that all phones and cameras be put away during the ceremony so you can be fully present. Our photographer will capture everything beautifully. Feel free to take photos during cocktail hour and reception!",
+    a: 'Yes, feel free to capture the moment! We just ask that you stay seated and keep phones on silent so everyone can be fully present.',
   },
   {
     q: 'What should I do if I have dietary restrictions?',
-    a: 'Please note any dietary restrictions on your RSVP form. We will do our best to accommodate all needs. Please also feel free to contact us directly if you have severe allergies.',
+    a: 'Please note any dietary restrictions or allergies on your RSVP form and we will make sure you are taken care of.',
   },
   {
     q: 'Where should I stay?',
-    a: 'We have arranged room blocks at nearby hotels. Please visit our Travel page for details and special rates.',
+    a: 'We are currently working on arranging hotel blocks for our guests and will update this page as soon as details are confirmed. Check back soon!',
   },
 ]
 

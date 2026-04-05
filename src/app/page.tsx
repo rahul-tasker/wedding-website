@@ -70,7 +70,7 @@ export default function HomePage() {
           {[
             { icon: '📅', label: 'Date', value: 'May 15, 2027' },
             { icon: '📍', label: 'Venue', value: 'Balistreri Vineyards, Denver' },
-            { icon: '🕒', label: 'Ceremony', value: '3:00 PM' },
+            { icon: '🕒', label: 'Ceremony', value: '6:00 PM' },
           ].map(({ icon, label, value }) => (
             <div key={label} className="flex flex-col items-center gap-2">
               <span className="text-3xl">{icon}</span>

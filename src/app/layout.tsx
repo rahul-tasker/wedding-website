@@ -27,6 +27,7 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: 'Danny & Rahul — Wedding',
   description: 'Join us for the wedding of Danny & Rahul on May 15, 2027.',
+  icons: { icon: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>' },
   openGraph: {
     title: 'Danny & Rahul — Wedding',
     description: 'Join us for the wedding of Danny & Rahul on May 15, 2027.',

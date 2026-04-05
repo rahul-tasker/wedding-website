@@ -6,16 +6,16 @@ const events = [
   {
     type: 'Ceremony',
     icon: '💒',
-    time: 'Saturday, May 15, 2027 at 3:00 PM',
+    time: 'Saturday, May 15, 2027 at 6:00 PM',
     venue: 'Balistreri Vineyards',
     address: '1946 W 65th Ave, Denver, CO 80221',
-    notes: 'Please arrive by 2:45 PM. The ceremony will begin promptly at 3:00 PM.',
+    notes: 'Please arrive by 5:45 PM. The ceremony will begin promptly at 6:00 PM.',
     mapsUrl: 'https://maps.google.com',
   },
   {
     type: 'Cocktail Hour',
     icon: '🥂',
-    time: '4:30 PM – 5:30 PM',
+    time: '7:00 PM – 8:00 PM',
     venue: 'Balistreri Vineyards — Outdoor Terrace',
     address: 'Same venue — outdoor vineyard terrace',
     notes: 'Light bites and drinks will be served in the garden following the ceremony.',
@@ -24,10 +24,10 @@ const events = [
   {
     type: 'Reception',
     icon: '🎉',
-    time: '5:30 PM – 10:00 PM',
+    time: '8:00 PM – 11:00 PM',
     venue: 'Balistreri Vineyards — Main Hall',
     address: 'Same venue — main ballroom',
-    notes: 'Dinner, dancing, and celebration. Black tie optional.',
+    notes: 'Dinner, dancing, and celebration.',
     mapsUrl: null,
   },
 ]
