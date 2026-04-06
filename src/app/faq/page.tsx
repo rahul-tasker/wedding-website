@@ -11,11 +11,11 @@ const faqs = [
   },
   {
     q: 'Are children welcome?',
-    a: 'Absolutely! We love your little ones and welcome them to celebrate with us.',
+    a: 'Absolutely! We love your little ones and welcome them to celebrate with us. And if you need a quiet place to step away, our home is just 15 minutes from the venue.',
   },
   {
     q: 'Can I bring a plus one?',
-    a: "We are only able to accommodate guests listed on your invitation. If your invite includes '& Guest,' please feel free to bring someone along. If not, we kindly ask that you attend solo.",
+    a: "We are only able to accommodate guests listed on your invitation. If your invite includes '& Guest,' please feel free to bring someone along. If not, we kindly ask that you attend solo — but if you have a special circumstance, don't hesitate to reach out and we'll do our best to work something out.",
   },
   {
     q: 'Will the ceremony be indoors or outdoors?',
@@ -88,7 +88,7 @@ export default function FaqPage() {
         <div className="mt-12 text-center">
           <p className="text-[#6B6B6B] mb-4">Still have questions?</p>
           <a
-            href="mailto:danny.rahul.wedding2027@gmail.com"
+            href="mailto:rahultasker@gmail.com,danielle.kang97@gmail.com"
             className="inline-block bg-[#C9A84C] hover:bg-[#E2C87A] text-white px-8 py-3 rounded-lg text-sm uppercase tracking-widest transition-colors"
           >
             Email Us

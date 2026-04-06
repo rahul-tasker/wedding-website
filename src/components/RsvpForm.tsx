@@ -10,8 +10,8 @@ const schema = z.object({
   name: z.string().min(2, 'Please enter your full name'),
   email: z.string().email('Please enter a valid email').optional().or(z.literal('')),
   attending: z.enum(['yes', 'no']),
-  guest_count: z.number().min(1).max(6),
-  meal_preference: z.enum(['chicken', 'fish', 'vegetarian', 'vegan']).optional(),
+  all_guests_attending: z.enum(['yes', 'no']).optional(),
+  guest_count: z.number().min(1).max(6).optional(),
   dietary_restrictions: z.string().optional(),
   message: z.string().optional(),
 })
@@ -31,10 +31,10 @@ export default function RsvpForm() {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { guest_count: 1 },
   })
 
   const attending = watch('attending')
+  const allGuestsAttending = watch('all_guests_attending')
 
   const onSubmit = async (data: FormData) => {
     setStatus('submitting')
@@ -42,13 +42,15 @@ export default function RsvpForm() {
       name: data.name,
       email: data.email || null,
       attending: data.attending === 'yes',
-      guest_count: data.guest_count,
-      meal_preference: data.attending === 'yes' ? (data.meal_preference ?? null) : null,
+      guest_count: data.attending === 'yes'
+        ? (data.all_guests_attending === 'no' ? (data.guest_count ?? null) : null)
+        : null,
       dietary_restrictions: data.dietary_restrictions || null,
       message: data.message || null,
     })
 
     if (error) {
+      console.error('Supabase error:', JSON.stringify(error))
       setStatus('error')
     } else {
       setStatus('success')
@@ -121,27 +123,38 @@ export default function RsvpForm() {
 
       {attending === 'yes' && (
         <>
-          {/* Guest count */}
+          {/* All guests attending */}
           <div>
-            <label className={labelClass}>Number of Guests *</label>
-            <select {...register('guest_count', { valueAsNumber: true })} className={inputClass()}>
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <option key={n} value={n}>{n}</option>
+            <label className={labelClass}>Will all invited guests be attending? *</label>
+            <div className="flex gap-4">
+              {['yes', 'no'].map((val) => (
+                <label key={val} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    {...register('all_guests_attending')}
+                    type="radio"
+                    value={val}
+                    className="accent-[var(--gold)] w-4 h-4"
+                  />
+                  <span className="text-sm text-[var(--charcoal)]">
+                    {val === 'yes' ? 'Yes' : 'No'}
+                  </span>
+                </label>
               ))}
-            </select>
+            </div>
           </div>
 
-          {/* Meal */}
-          <div>
-            <label className={labelClass}>Meal Preference</label>
-            <select {...register('meal_preference')} className={inputClass()}>
-              <option value="">Select a meal</option>
-              <option value="chicken">Chicken</option>
-              <option value="fish">Fish</option>
-              <option value="vegetarian">Vegetarian</option>
-              <option value="vegan">Vegan</option>
-            </select>
-          </div>
+          {/* Guest count — only if not all attending */}
+          {allGuestsAttending === 'no' && (
+            <div>
+              <label className={labelClass}>How many guests will be attending? *</label>
+              <select {...register('guest_count', { valueAsNumber: true })} className={inputClass()}>
+                <option value="">Select</option>
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <option key={n} value={n}>{n}</option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Dietary */}
           <div>

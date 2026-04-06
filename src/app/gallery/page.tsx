@@ -51,9 +51,6 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        <p className="text-center text-sm text-[#6B6B6B] mt-12">
-          Photos by <span className="font-semibold text-[#3D3D3D]">Emily Chen Photography</span>
-        </p>
       </Section>
     </div>
   )
