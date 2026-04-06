@@ -6,27 +6,27 @@ const events = [
   {
     type: 'Ceremony',
     icon: '💒',
-    time: 'Saturday, May 15, 2027 at 6:00 PM',
+    time: 'Saturday, May 15, 2027 at 6:30 PM',
     venue: 'Balistreri Vineyards',
     address: '1946 W 65th Ave, Denver, CO 80221',
-    notes: 'Please arrive by 5:45 PM. The ceremony will begin promptly at 6:00 PM.',
-    mapsUrl: 'https://maps.google.com',
+    notes: 'Please arrive by 6:00 PM. The ceremony will begin promptly at 6:30 PM.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Balistreri+Vineyards+1946+W+65th+Ave+Denver+CO+80221',
   },
   {
     type: 'Cocktail Hour',
     icon: '🥂',
-    time: '7:00 PM – 8:00 PM',
-    venue: 'Balistreri Vineyards — Outdoor Terrace',
-    address: 'Same venue — outdoor vineyard terrace',
-    notes: 'Light bites and drinks will be served in the garden following the ceremony.',
+    time: '7:30 PM – 8:30 PM',
+    venue: 'Balistreri Vineyards',
+    address: 'Same venue',
+    notes: 'Light bites and drinks will be served following the ceremony.',
     mapsUrl: null,
   },
   {
     type: 'Reception',
     icon: '🎉',
-    time: '8:00 PM – 11:00 PM',
-    venue: 'Balistreri Vineyards — Main Hall',
-    address: 'Same venue — main ballroom',
+    time: '8:30 PM – 11:00 PM',
+    venue: 'Balistreri Vineyards',
+    address: 'Same venue',
     notes: 'Dinner, dancing, and celebration.',
     mapsUrl: null,
   },
@@ -45,8 +45,8 @@ export default function DetailsPage() {
         <div className="grid gap-8 md:grid-cols-3">
           {events.map(({ type, icon, time, venue, address, notes, mapsUrl }) => (
             <div key={type} className="bg-white rounded-2xl border border-[var(--blush)]/50 p-8 shadow-sm">
-              <div className="text-4xl mb-4">{icon}</div>
-              <h3 className="font-serif text-2xl text-[var(--charcoal)] mb-1">{type}</h3>
+              <div className="text-4xl mb-4 text-center">{icon}</div>
+              <h3 className="font-serif text-2xl text-[var(--charcoal)] mb-1 text-center">{type}</h3>
               <div className="divider w-24 my-4">
                 <span className="text-[var(--gold)] text-sm">✦</span>
               </div>
