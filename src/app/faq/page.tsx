@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: 'What time should I arrive?',
-    a: 'Please plan to arrive by 6:00 PM so we can get the celebration started on time.',
+    a: 'Guests can begin arriving at 5:30 PM, when the bar opens. Please be seated by 5:50 PM so we can begin the ceremony promptly at 6:00 PM.',
   },
   {
     q: 'Will there be an open bar?',
