@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from 'react'
 import Section from '@/components/ui/Section'
 import SectionHeader from '@/components/ui/SectionHeader'
 
@@ -35,7 +32,7 @@ const faqs = [
   },
   {
     q: 'Can I take photos during the ceremony?',
-    a: 'Yes, feel free to capture the moment! We just ask that you stay seated and keep phones on silent so everyone can be fully present.',
+    a: 'We ask that you do not take any photos during the ceremony. If you feel you must, please ensure flash is off and your phone is on silent so everyone can be fully present.',
   },
   {
     q: 'What should I do if I have dietary restrictions?',
@@ -47,49 +44,33 @@ const faqs = [
   },
 ]
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false)
-  return (
-    <div className="border-b border-[#E8C4B8]/50 last:border-0">
-      <button
-        className="w-full text-left py-6 flex items-center justify-between gap-4 hover:text-[#C9A84C] transition-colors"
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-      >
-        <span className="font-serif text-lg text-[#3D3D3D]">{q}</span>
-        <span className="text-[#C9A84C] text-2xl shrink-0 transition-transform" style={{ transform: open ? 'rotate(45deg)' : 'none' }}>
-          +
-        </span>
-      </button>
-      {open && (
-        <div className="pb-6 text-[#6B6B6B] leading-relaxed">
-          {a}
-        </div>
-      )}
-    </div>
-  )
-}
-
 export default function FaqPage() {
   return (
     <div className="pt-24">
-      <Section narrow>
+      <Section>
         <SectionHeader
           script="FAQ"
           title="Frequently Asked Questions"
           subtitle="Can't find your answer here? Reach out to us directly."
+          light
         />
-        <div className="bg-white rounded-2xl border border-[#E8C4B8]/40 shadow-sm px-8 py-4">
+        <div className="grid gap-6 md:grid-cols-2">
           {faqs.map(({ q, a }) => (
-            <FaqItem key={q} q={q} a={a} />
+            <div
+              key={q}
+              className="bg-white rounded-2xl border border-[#980204]/40 shadow-sm p-6"
+            >
+              <h3 className="font-serif text-lg text-[#3F0013] mb-2">{q}</h3>
+              <p className="text-sm text-[#767B39] leading-relaxed">{a}</p>
+            </div>
           ))}
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-[#6B6B6B] mb-4">Still have questions?</p>
+          <p className="text-white/90 mb-4">Still have questions?</p>
           <a
             href="mailto:rahultasker@gmail.com,danielle.kang97@gmail.com"
-            className="inline-block bg-[#C9A84C] hover:bg-[#E2C87A] text-white px-8 py-3 rounded-lg text-sm uppercase tracking-widest transition-colors"
+            className="inline-block bg-[#E27921] hover:bg-[#EC9A52] text-white px-8 py-3 rounded-lg text-sm uppercase tracking-widest transition-colors"
           >
             Email Us
           </a>

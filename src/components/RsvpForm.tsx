@@ -1,20 +1,39 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, useFieldArray } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { supabase } from '@/lib/supabase'
 
-const schema = z.object({
-  name: z.string().min(2, 'Please enter your full name'),
-  email: z.string().email('Please enter a valid email').optional().or(z.literal('')),
-  attending: z.enum(['yes', 'no']),
-  all_guests_attending: z.enum(['yes', 'no']).optional(),
-  guest_count: z.number().min(1).max(6).optional(),
-  dietary_restrictions: z.string().optional(),
-  message: z.string().optional(),
-})
+const schema = z
+  .object({
+    name: z.string().min(2, 'Please enter your full name'),
+    email: z.string().email('Please enter a valid email').optional().or(z.literal('')),
+    attending: z.enum(['yes', 'no']),
+    guests: z
+      .array(
+        z.object({
+          name: z.string().optional(),
+          is_child: z.boolean().optional(),
+          dietary: z.string().optional(),
+        })
+      )
+      .optional(),
+    message: z.string().optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.attending === 'yes') {
+      const named = (data.guests ?? []).filter((g) => g.name && g.name.trim())
+      if (named.length === 0) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['guests'],
+          message: 'Please list at least one guest who will be attending',
+        })
+      }
+    }
+  })
 
 type FormData = z.infer<typeof schema>
 
@@ -25,27 +44,46 @@ export default function RsvpForm() {
 
   const {
     register,
+    control,
     handleSubmit,
     watch,
     reset,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: { guests: [{ name: '', is_child: false, dietary: '' }] },
   })
 
+  const { fields, append, remove } = useFieldArray({ control, name: 'guests' })
+
   const attending = watch('attending')
-  const allGuestsAttending = watch('all_guests_attending')
 
   const onSubmit = async (data: FormData) => {
     setStatus('submitting')
+
+    const guests =
+      data.attending === 'yes'
+        ? (data.guests ?? [])
+            .filter((g) => g.name && g.name.trim())
+            .map((g) => ({
+              name: g.name!.trim(),
+              is_child: !!g.is_child,
+              dietary: g.dietary?.trim() || null,
+            }))
+        : []
+
     const { error } = await supabase.from('rsvps').insert({
       name: data.name,
       email: data.email || null,
       attending: data.attending === 'yes',
-      guest_count: data.attending === 'yes'
-        ? (data.all_guests_attending === 'no' ? (data.guest_count ?? null) : null)
+      guests: data.attending === 'yes' ? guests : null,
+      guest_count: data.attending === 'yes' ? guests.length : null,
+      dietary_restrictions: data.attending === 'yes'
+        ? guests
+            .filter((g) => g.dietary)
+            .map((g) => `${g.name}: ${g.dietary}`)
+            .join('; ') || null
         : null,
-      dietary_restrictions: data.dietary_restrictions || null,
       message: data.message || null,
     })
 
@@ -54,7 +92,7 @@ export default function RsvpForm() {
       setStatus('error')
     } else {
       setStatus('success')
-      reset()
+      reset({ guests: [{ name: '', is_child: false, dietary: '' }] })
     }
   }
 
@@ -123,43 +161,58 @@ export default function RsvpForm() {
 
       {attending === 'yes' && (
         <>
-          {/* All guests attending */}
+          {/* Who is attending */}
           <div>
-            <label className={labelClass}>Will all invited guests be attending? *</label>
-            <div className="flex gap-4">
-              {['yes', 'no'].map((val) => (
-                <label key={val} className="flex items-center gap-2 cursor-pointer">
+            <label className={labelClass}>Who will be attending? *</label>
+            <p className="text-xs text-[var(--charcoal-light)] mb-3 normal-case font-normal tracking-normal">
+              List everyone in your party, including yourself and any children.
+            </p>
+            <div className="space-y-4">
+              {fields.map((field, i) => (
+                <div key={field.id} className="rounded-lg border border-[var(--blush)]/60 p-3 space-y-2">
+                  <div className="flex items-center gap-3">
+                    <input
+                      {...register(`guests.${i}.name`)}
+                      placeholder="Full name"
+                      className={`${inputClass()} flex-1 min-w-0`}
+                    />
+                    <label className="flex items-center gap-2 text-sm text-[var(--charcoal)] whitespace-nowrap cursor-pointer">
+                      <input
+                        type="checkbox"
+                        {...register(`guests.${i}.is_child`)}
+                        className="accent-[var(--gold)] w-4 h-4"
+                      />
+                      Child
+                    </label>
+                    {fields.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => remove(i)}
+                        className="text-[var(--charcoal-light)] hover:text-red-500 text-2xl leading-none px-1"
+                        aria-label="Remove guest"
+                      >
+                        ×
+                      </button>
+                    )}
+                  </div>
                   <input
-                    {...register('all_guests_attending')}
-                    type="radio"
-                    value={val}
-                    className="accent-[var(--gold)] w-4 h-4"
+                    {...register(`guests.${i}.dietary`)}
+                    placeholder="Dietary restrictions / allergies (optional)"
+                    className={inputClass()}
                   />
-                  <span className="text-sm text-[var(--charcoal)]">
-                    {val === 'yes' ? 'Yes' : 'No'}
-                  </span>
-                </label>
+                </div>
               ))}
             </div>
-          </div>
-
-          {/* Guest count — only if not all attending */}
-          {allGuestsAttending === 'no' && (
-            <div>
-              <label className={labelClass}>How many guests will be attending? *</label>
-              <select {...register('guest_count', { valueAsNumber: true })} className={inputClass()}>
-                <option value="">Select</option>
-                {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <option key={n} value={n}>{n}</option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          {/* Dietary */}
-          <div>
-            <label className={labelClass}>Dietary Restrictions / Allergies</label>
-            <input {...register('dietary_restrictions')} placeholder="Nut allergy, gluten-free, etc." className={inputClass()} />
+            <button
+              type="button"
+              onClick={() => append({ name: '', is_child: false, dietary: '' })}
+              className="mt-3 text-sm font-semibold text-[var(--gold)] hover:underline underline-offset-4"
+            >
+              + Add another guest
+            </button>
+            {errors.guests && (
+              <p className="text-red-500 text-xs mt-2">{errors.guests.message as string}</p>
+            )}
           </div>
         </>
       )}

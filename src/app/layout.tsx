@@ -1,26 +1,21 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Lato, Great_Vibes } from 'next/font/google'
+import { Jost, Abril_Fatface } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
-const playfair = Playfair_Display({
+// Main / body font. Futura isn't on Google Fonts (licensed), so we prefer it in
+// the CSS font stack and fall back to Jost — a free, near-identical geometric sans.
+const jost = Jost({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-jost',
   display: 'swap',
 })
 
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  variable: '--font-lato',
-  display: 'swap',
-})
-
-const greatVibes = Great_Vibes({
+// Display / accent ("subtext") font.
+const abril = Abril_Fatface({
   subsets: ['latin'],
   weight: '400',
-  variable: '--font-great-vibes',
+  variable: '--font-abril',
   display: 'swap',
 })
 
@@ -41,11 +36,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${lato.variable} ${greatVibes.variable}`}>
+    <html lang="en" className={`${jost.variable} ${abril.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
-        <Footer />
       </body>
     </html>
   )

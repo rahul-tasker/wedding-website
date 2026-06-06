@@ -8,9 +8,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/details', label: 'Details' },
   { href: '/rsvp', label: 'RSVP' },
-  { href: '/registry', label: 'Give' },
-  { href: '/travel', label: 'Travel' },
-  { href: '/gallery', label: 'Gallery' },
+  { href: '/registry', label: 'Registry' },
   { href: '/faq', label: 'FAQ' },
 ]
 
@@ -32,7 +30,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[var(--cream)] shadow-sm border-b border-[var(--blush)]' : 'bg-transparent'
+        scrolled ? 'bg-[#767B39] shadow-sm border-b border-black/10' : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -50,7 +48,7 @@ export default function Navbar() {
               className={`text-sm tracking-wide uppercase transition-colors hover:text-[var(--gold)] ${
                 pathname === href
                   ? 'text-[var(--gold)] font-semibold'
-                  : !scrolled && pathname === '/' ? 'text-white/90' : 'text-[var(--charcoal)]'
+                  : !scrolled && pathname === '/' ? 'text-white/90' : 'text-[var(--gold)]'
               }`}
             >
               {label}
@@ -72,14 +70,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-[var(--cream)] border-t border-[var(--blush)] px-6 py-4">
+        <div className="lg:hidden bg-[#767B39] border-t border-black/10 px-6 py-4">
           <nav className="flex flex-col gap-4">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className={`text-sm tracking-wide uppercase transition-colors hover:text-[var(--gold)] ${
-                  pathname === href ? 'text-[var(--gold)] font-semibold' : 'text-[var(--charcoal)]'
+                className={`text-sm tracking-wide uppercase transition-colors hover:opacity-80 ${
+                  pathname === href ? 'text-[var(--gold)] font-semibold' : 'text-[var(--gold)]'
                 }`}
               >
                 {label}

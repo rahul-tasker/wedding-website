@@ -13,7 +13,6 @@ export default function Footer() {
             { href: '/details', label: 'Details' },
             { href: '/rsvp', label: 'RSVP' },
             { href: '/registry', label: 'Registry' },
-            { href: '/travel', label: 'Travel' },
             { href: '/faq', label: 'FAQ' },
           ].map(({ href, label }) => (
             <Link key={href} href={href} className="hover:text-[var(--gold-light)] transition-colors">
