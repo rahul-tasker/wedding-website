@@ -3,12 +3,22 @@
 import { useEffect, useState } from 'react'
 
 const WEDDING_DATE = new Date('2027-05-15T15:00:00-06:00')
+// Start and end of the wedding day (local to the venue, -06:00)
+const WEDDING_DAY_START = new Date('2027-05-15T00:00:00-06:00')
+const WEDDING_DAY_END = new Date('2027-05-16T00:00:00-06:00')
 
-function getTimeLeft() {
+type CountdownState =
+  | { phase: 'counting'; days: number; hours: number; minutes: number; seconds: number }
+  | { phase: 'today' }
+  | { phase: 'married' }
+
+function getCountdownState(): CountdownState {
   const now = new Date()
+  if (now.getTime() >= WEDDING_DAY_END.getTime()) return { phase: 'married' }
+  if (now.getTime() >= WEDDING_DAY_START.getTime()) return { phase: 'today' }
   const diff = WEDDING_DATE.getTime() - now.getTime()
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 }
   return {
+    phase: 'counting',
     days: Math.floor(diff / (1000 * 60 * 60 * 24)),
     hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
     minutes: Math.floor((diff / 1000 / 60) % 60),
@@ -17,19 +27,42 @@ function getTimeLeft() {
 }
 
 export default function Countdown() {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  // Start in the 'counting' phase so server and first client render match (avoids hydration mismatch)
+  const [state, setState] = useState<CountdownState>({
+    phase: 'counting',
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  })
 
   useEffect(() => {
-    setTime(getTimeLeft())
-    const interval = setInterval(() => setTime(getTimeLeft()), 1000)
+    setState(getCountdownState())
+    const interval = setInterval(() => setState(getCountdownState()), 1000)
     return () => clearInterval(interval)
   }, [])
 
+  if (state.phase === 'today') {
+    return (
+      <div className="text-center text-3xl md:text-4xl font-serif text-white font-bold">
+        Today&apos;s the day! 💍
+      </div>
+    )
+  }
+
+  if (state.phase === 'married') {
+    return (
+      <div className="text-center text-3xl md:text-4xl font-serif text-white font-bold">
+        Just Married!
+      </div>
+    )
+  }
+
   const units = [
-    { label: 'Days', value: time.days },
-    { label: 'Hours', value: time.hours },
-    { label: 'Minutes', value: time.minutes },
-    { label: 'Seconds', value: time.seconds },
+    { label: 'Days', value: state.days },
+    { label: 'Hours', value: state.hours },
+    { label: 'Minutes', value: state.minutes },
+    { label: 'Seconds', value: state.seconds },
   ]
 
   return (
