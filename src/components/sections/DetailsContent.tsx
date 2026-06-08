@@ -190,8 +190,8 @@ export default function DetailsContent({ withHero = false }: { withHero?: boolea
           </p>
           <div className="flex flex-wrap justify-center gap-16">
             {[
-              { name: 'Georgia', role: 'Flower Pup', img: '/georgia.jpg', imgClass: 'object-[38%_61%] scale-[1.51] group-hover:scale-[1.61]' },
               { name: 'Teddy', role: 'Dog of Honor', img: '/teddy.jpg', imgClass: 'group-hover:scale-110' },
+              { name: 'Georgia', role: 'Flower Pup', img: '/georgia.jpg', imgClass: 'object-[38%_61%] scale-[1.51] group-hover:scale-[1.61]' },
             ].map(({ name, role, img, imgClass }) => (
               <div key={name} className="text-center group">
                 <div className="relative mb-4 mx-auto w-40 h-40 rounded-full overflow-hidden shadow-md">
