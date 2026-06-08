@@ -237,7 +237,7 @@ export default function RsvpForm() {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full bg-[var(--gold)] hover:bg-[var(--gold-light)] text-white font-semibold py-4 rounded-lg uppercase tracking-widest text-sm transition-colors disabled:opacity-60"
+        className="w-full bg-[#EB9958] hover:bg-[#EFB079] text-white font-semibold py-4 rounded-lg uppercase tracking-widest text-sm transition-colors disabled:opacity-60"
       >
         {status === 'submitting' ? 'Sending...' : 'Send RSVP'}
       </button>

@@ -13,7 +13,7 @@
   --charcoal-light: #767B39; /* spanish bistre (olive) */
   --white: #FFFFFF;
 
-  --background: #767B39;
+  --background: #205476;
   --foreground: var(--white);
 }
 
@@ -43,7 +43,7 @@ html {
 }
 
 body {
-  background: #767B39;
+  background: #205476;
   color: var(--charcoal);
   font-family: "Futura", var(--font-jost), "Century Gothic", sans-serif;
   line-height: 1.6;

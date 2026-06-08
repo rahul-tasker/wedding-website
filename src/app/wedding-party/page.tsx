@@ -26,9 +26,9 @@ function PartyCard({ name, role, relation, seed }: { name: string; role: string;
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
         />
       </div>
-      <h3 className="font-serif text-lg text-white">{name}</h3>
-      <p className="text-xs uppercase tracking-widest text-[#E27921] font-semibold mb-1">{role}</p>
-      <p className="text-sm text-white/80">{relation}</p>
+      <h3 className="font-serif text-lg text-[#F0C047]">{name}</h3>
+      <p className="text-xs uppercase tracking-widest text-[#F0C047] font-semibold mb-1">{role}</p>
+      <p className="text-sm text-[#F0C047]/80">{relation}</p>
     </div>
   )
 }
@@ -41,13 +41,13 @@ export default function WeddingPartyPage() {
           script="Wedding Party"
           title="Meet the Crew"
           subtitle="The incredible people who have stood by us every step of the way."
-          light
+          color="#F0C047"
         />
 
         {/* Bridesmaids */}
         <div className="mb-16">
-          <h2 className="font-serif text-2xl text-center text-white mb-10">
-            <span className="font-script text-4xl text-[#E27921] block mb-2">Danny&apos;s Side</span>
+          <h2 className="font-serif text-2xl text-center text-[#F0C047] mb-10">
+            <span className="font-script text-4xl text-[#F0C047] block mb-2">Danny&apos;s Side</span>
             Bridesmaids
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
@@ -58,13 +58,13 @@ export default function WeddingPartyPage() {
         </div>
 
         <div className="divider w-64 mx-auto my-12">
-          <span className="text-[#E27921] text-xl">✦</span>
+          <span className="text-[#F0C047] text-xl">✦</span>
         </div>
 
         {/* Groomsmen */}
         <div>
-          <h2 className="font-serif text-2xl text-center text-white mb-10">
-            <span className="font-script text-4xl text-[#E27921] block mb-2">Rahul&apos;s Side</span>
+          <h2 className="font-serif text-2xl text-center text-[#F0C047] mb-10">
+            <span className="font-script text-4xl text-[#F0C047] block mb-2">Rahul&apos;s Side</span>
             Groomsmen
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">

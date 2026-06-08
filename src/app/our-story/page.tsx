@@ -42,7 +42,7 @@ export default function OurStoryPage() {
           script="Our Story"
           title="How It All Began"
           subtitle="Every great love story has a beginning. Ours started on a rooftop in San Francisco."
-          light
+          color="#F0C047"
         />
 
         <div className="relative mt-16">

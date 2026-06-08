@@ -1,5 +1,9 @@
 import Link from 'next/link'
 import Countdown from '@/components/Countdown'
+import DetailsContent from '@/components/sections/DetailsContent'
+import RsvpContent from '@/components/sections/RsvpContent'
+import RegistryContent from '@/components/sections/RegistryContent'
+import FaqContent from '@/components/sections/FaqContent'
 
 export default function HomePage() {
   return (
@@ -17,7 +21,7 @@ export default function HomePage() {
         {/* Title + countdown — near the top */}
         <div className="relative z-10 max-w-5xl mx-auto">
           <p className="text-[#EC9A52] tracking-[0.3em] uppercase text-sm mb-6 opacity-0 animate-fade-in-up">
-            Together with their families
+            Together with their Families & Friends
           </p>
           <h1 className="font-script text-6xl md:text-8xl text-white mb-4 whitespace-nowrap opacity-0 animate-fade-in-up animate-delay-100">
             Danny & Rahul
@@ -26,22 +30,15 @@ export default function HomePage() {
           <div className="opacity-0 animate-fade-in-up animate-delay-200">
             <Countdown />
           </div>
-        </div>
 
-        {/* Buttons — at the bottom, centered */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up animate-delay-300">
-          <Link
-            href="/rsvp"
-            className="bg-[#E27921] hover:bg-[#EC9A52] text-white px-10 py-4 rounded-lg text-sm uppercase tracking-widest font-semibold transition-colors"
-          >
-            RSVP Now
-          </Link>
-          <Link
-            href="/details"
-            className="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-10 py-4 rounded-lg text-sm uppercase tracking-widest transition-colors"
-          >
-            View Details
-          </Link>
+          <div className="mt-8 opacity-0 animate-fade-in-up animate-delay-300">
+            <Link
+              href="/rsvp"
+              className="inline-block bg-[#E27921] hover:bg-[#EC9A52] text-white px-10 py-4 rounded-lg text-sm uppercase tracking-widest font-semibold transition-colors"
+            >
+              RSVP Now
+            </Link>
+          </div>
         </div>
 
         {/* When — bottom left */}
@@ -56,6 +53,12 @@ export default function HomePage() {
           <p className="text-white/90 text-base md:text-lg tracking-wide">Balistreri Vineyards, Denver, CO</p>
         </div>
       </section>
+
+      {/* Stacked sections — scroll through the whole site (no images here) */}
+      <div id="details" className="scroll-mt-20"><DetailsContent /></div>
+      <div id="rsvp" className="scroll-mt-20"><RsvpContent /></div>
+      <div id="registry" className="scroll-mt-20"><RegistryContent /></div>
+      <div id="faq" className="scroll-mt-20"><FaqContent /></div>
     </>
   )
 }

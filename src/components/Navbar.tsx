@@ -30,12 +30,12 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#767B39] shadow-sm border-b border-black/10' : 'bg-transparent'
+        scrolled ? 'bg-[#205476] shadow-sm border-b border-black/10' : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="font-script text-3xl text-[var(--gold)] hover:opacity-80 transition-opacity">
+        <Link href="/" className="font-script text-3xl text-[#F0C047] hover:opacity-80 transition-opacity">
           D & R
         </Link>
 
@@ -45,10 +45,10 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className={`text-sm tracking-wide uppercase transition-colors hover:text-[var(--gold)] ${
+              className={`text-sm tracking-wide uppercase transition-colors hover:text-[#F0C047] ${
                 pathname === href
-                  ? 'text-[var(--gold)] font-semibold'
-                  : !scrolled && pathname === '/' ? 'text-white/90' : 'text-[var(--gold)]'
+                  ? 'text-[#F0C047] font-semibold'
+                  : !scrolled && pathname === '/' ? 'text-white/90' : 'text-[#F0C047]'
               }`}
             >
               {label}
@@ -70,14 +70,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-[#767B39] border-t border-black/10 px-6 py-4">
+        <div className="lg:hidden bg-[#205476] border-t border-black/10 px-6 py-4">
           <nav className="flex flex-col gap-4">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 className={`text-sm tracking-wide uppercase transition-colors hover:opacity-80 ${
-                  pathname === href ? 'text-[var(--gold)] font-semibold' : 'text-[var(--gold)]'
+                  pathname === href ? 'text-[#F0C047] font-semibold' : 'text-[#F0C047]'
                 }`}
               >
                 {label}
