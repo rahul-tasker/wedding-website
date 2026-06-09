@@ -43,11 +43,11 @@ export default function DetailsContent({ withHero = false }: { withHero?: boolea
     <div className={`bg-[#205476] ${withHero ? '' : 'pt-24'}`}>
       {withHero && (
         <section
-          className="relative h-screen flex items-center justify-center text-center px-6 bg-cover bg-center"
+          className="relative aspect-[3/2] md:aspect-auto md:h-screen flex items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/details-hero.jpg)' }}
         >
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 pt-24 pb-12">
+          <div className="absolute inset-0 bg-black/30 md:bg-black/40" />
+          <div className="relative z-10 pt-16 pb-8 md:pt-24 md:pb-12">
             <h1 className="font-serif text-6xl md:text-7xl text-[#F0C047] mb-4">Details</h1>
             <p className="text-[#F0C047]/90 text-lg md:text-xl max-w-xl mx-auto">
               We are so excited to celebrate with you.

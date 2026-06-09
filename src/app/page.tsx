@@ -10,7 +10,7 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section
-        className="relative min-h-screen flex flex-col items-center text-center px-6 pt-28 md:pt-32 bg-cover bg-center bg-fixed"
+        className="relative min-h-screen flex flex-col items-center text-center px-6 pt-28 md:pt-32 bg-cover bg-center md:bg-fixed"
         style={{
           backgroundImage: 'url(/hero.jpg)',
         }}
@@ -41,16 +41,16 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* When — bottom left */}
-        <div className="absolute bottom-8 left-8 z-10 text-left opacity-0 animate-fade-in-up animate-delay-400">
-          <p className="text-[#EC9A52] text-xs tracking-[0.25em] uppercase mb-1">When</p>
-          <p className="text-white/90 text-base md:text-lg tracking-wide uppercase">May 15, 2027</p>
-        </div>
-
-        {/* Where — bottom right */}
-        <div className="absolute bottom-8 right-8 z-10 text-right opacity-0 animate-fade-in-up animate-delay-400">
-          <p className="text-[#EC9A52] text-xs tracking-[0.25em] uppercase mb-1">Where</p>
-          <p className="text-white/90 text-base md:text-lg tracking-wide">Balistreri Vineyards, Denver, CO</p>
+        {/* When / Where — bottom (stacks on mobile, anchors left/right on larger screens) */}
+        <div className="absolute bottom-8 inset-x-6 z-10 flex flex-col items-center gap-5 sm:flex-row sm:items-end sm:justify-between opacity-0 animate-fade-in-up animate-delay-400">
+          <div className="text-center sm:text-left">
+            <p className="text-[#EC9A52] text-xs tracking-[0.25em] uppercase mb-1">When</p>
+            <p className="text-white/90 text-base md:text-lg tracking-wide uppercase">May 15, 2027</p>
+          </div>
+          <div className="text-center sm:text-right">
+            <p className="text-[#EC9A52] text-xs tracking-[0.25em] uppercase mb-1">Where</p>
+            <p className="text-white/90 text-base md:text-lg tracking-wide">Balistreri Vineyards, Denver, CO</p>
+          </div>
         </div>
       </section>
 

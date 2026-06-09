@@ -15,7 +15,7 @@ const funds: {
     description:
       'In honor of our goddaughter, Vera, who lives with Rett\'s Syndrome.\n\nThe Rett Syndrome Research Trust funds the most promising research to develop treatments and a cure for Rett syndrome.',
     image: '/retts-logo.jpg',
-    url: 'https://www.rettsyndrome.org/get-involved/donate/',
+    url: 'https://give.rettsyndrome.org/Cure4Vera',
     color: '#F7E6C4',
   },
   {
@@ -43,11 +43,11 @@ export default function RegistryContent({ withHero = false }: { withHero?: boole
     <div className={`bg-[#205476] min-h-screen ${withHero ? '' : 'pt-24'}`}>
       {withHero && (
         <section
-          className="relative h-screen flex items-center justify-center text-center px-6 bg-cover bg-center"
+          className="relative aspect-[3/2] md:aspect-auto md:h-screen flex items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/registry-hero.jpg)' }}
         >
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 pt-24 pb-12">
+          <div className="absolute inset-0 bg-black/30 md:bg-black/40" />
+          <div className="relative z-10 pt-16 pb-8 md:pt-24 md:pb-12">
             <h1 className="font-serif text-6xl md:text-7xl text-[#F0C047] mb-4">Registry</h1>
             <p className="text-[#F0C047]/90 text-lg md:text-xl max-w-xl mx-auto">In Lieu of Gifts</p>
           </div>
@@ -82,7 +82,7 @@ export default function RegistryContent({ withHero = false }: { withHero?: boole
               </div>
               <div className="flex-1 bg-white p-6">
                 <h3 className="font-serif text-xl text-[#3F0013] mb-2">{name}</h3>
-                <p className="text-sm text-[#767B39] leading-relaxed mb-4 whitespace-pre-line">{description}</p>
+                <p className="text-sm text-black leading-relaxed mb-4 whitespace-pre-line">{description}</p>
                 <Link
                   href={url}
                   target="_blank"

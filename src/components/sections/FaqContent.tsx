@@ -46,8 +46,8 @@ const faqs = [
 export default function FaqContent({ withImage = false }: { withImage?: boolean }) {
   return (
     <div
-      className={`min-h-screen bg-[#205476] pb-20 px-6 ${withImage ? 'bg-center bg-no-repeat pt-32' : 'pt-24'}`}
-      style={withImage ? { backgroundImage: 'url(/faq-bg.jpg)', backgroundSize: '70.4rem auto' } : undefined}
+      className={`min-h-screen bg-[#205476] pb-20 px-6 pt-24 ${withImage ? 'bg-center bg-no-repeat bg-cover' : ''}`}
+      style={withImage ? { backgroundImage: 'url(/faq-bg.jpg)' } : undefined}
     >
       <div className="max-w-5xl mx-auto">
         <SectionHeader script="FAQ" title="Frequently Asked Questions" color="#F0C047" />
@@ -59,7 +59,7 @@ export default function FaqContent({ withImage = false }: { withImage?: boolean 
               className="bg-white/80 rounded-2xl border border-[#980204]/40 shadow-sm p-6"
             >
               <h3 className="font-serif text-lg text-[#3F0013] mb-2">{q}</h3>
-              <p className="text-sm text-[#767B39] leading-relaxed">{a}</p>
+              <p className="text-sm text-black leading-relaxed">{a}</p>
             </div>
           ))}
         </div>
