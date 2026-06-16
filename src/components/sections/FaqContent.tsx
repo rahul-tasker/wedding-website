@@ -6,8 +6,8 @@ const faqs = [
     a: 'Cocktail attire — come looking and feeling your best. Wear whatever makes you feel most like yourself.',
   },
   {
-    q: 'Are children welcome?',
-    a: 'Absolutely! We love your little ones and welcome them to celebrate with us. And if you need a quiet place to step away, our home is just 15 minutes from the venue.',
+    q: 'Are kids invited?',
+    a: "While we love your little ones, we've chosen to keep our celebration adults-only as much as possible. For those who need it, we're arranging childcare at our home, just 15 minutes from the venue. If you'd like us to make an exception, please don't hesitate to reach out.",
   },
   {
     q: 'Can I bring a plus one?',
