@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: 'Are kids invited?',
-    a: "While we love your little ones, we've chosen to keep our celebration adults-only as much as possible. For those who need it, we're arranging childcare at our home, just 15 minutes from the venue. If you'd like us to make an exception, please don't hesitate to reach out.",
+    a: "While we love your little ones, we've chosen to keep our celebration adults-only as much as possible. If you'd like us to make an exception, please don't hesitate to reach out.",
   },
   {
     q: 'Can I bring a plus one?',
